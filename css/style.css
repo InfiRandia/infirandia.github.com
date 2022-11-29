@@ -1,0 +1,151 @@
+/* Good to have */
+.col-1 {
+  width: 8.33%;
+}
+.col-2 {
+  width: 16.66%;
+}
+.col-3 {
+  width: 25%;
+}
+.col-4 {
+  width: 33.33%;
+}
+.col-5 {
+  width: 41.66%;
+}
+.col-6 {
+  width: 50%;
+}
+.col-7 {
+  width: 58.33%;
+}
+.col-8 {
+  width: 66.66%;
+}
+.col-9 {
+  width: 75%;
+}
+.col-10 {
+  width: 83.33%;
+}
+.col-11 {
+  width: 91.66%;
+}
+.col-12 {
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+  justify-content: center;
+}
+
+.auto {
+  display: flex;
+}
+
+.auto::after {
+  clear: both;
+  content: '';
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.row::after {
+  clear: both;
+  content: '';
+}
+
+/* Essentials in Mobile First design */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  display: block;
+  padding: 1.5vw;
+}
+
+header {
+  align-items: center;
+  font-size: 3vw;
+  padding: 4vh;
+  margin: 0 0 2vw 0;
+  color: whitesmoke;
+  background-color: #390053;
+  font-family: sans;
+  border-radius: 30px;
+}
+
+header h1 {
+  font-size: 7vw;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+}
+
+header p {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+}
+
+header a.social {
+  margin: 1vh 0 0 0;
+  max-width: 7vw;
+}
+
+header img.profile {
+  margin: 0;
+  padding: 0;
+  border-radius: 100%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+img {
+  margin: 0 0 2vw 0;
+  width: 100%;
+}
+
+footer {
+  padding: 0 0 1.5vw 0;
+  font-size: 2.5vw;
+}
+
+/* Custom for bigger devices (PC, Ipads, etc) */
+@media screen and (min-width: 480px) {
+  main {
+    display: flex;
+  }
+
+  header {
+    font-size: 1.4vw;
+  }
+
+  header h1 {
+    font-size: 4vw;
+  }
+
+  header a.social {
+    max-width: 3.5vw;
+  }
+
+  section.small {
+    max-width: 35vw;
+    padding: 0 0 0 1.5vw;
+  }
+
+  section.big {
+    max-width: 65vw;
+  }
+}
