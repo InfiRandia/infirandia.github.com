@@ -71,15 +71,162 @@ main {
   padding: 1.5vw;
 }
 
+body.game {
+  background-color: #190024;
+  color: #9b9b9b;
+}
+
+.game main {
+  padding: 0;
+}
+
+article {
+  width: 100%;
+}
+
+.game .media-display {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  background-color: black;
+  padding: 1vh;
+  margin: 1vh 0 0 0;
+}
+
+.mute-btn {
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+  width: 5vw;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: block;
+  background-image: url('../media/audio_muted.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+a.muted {
+  background-image: url('../media/audio_on.png');
+}
+
+.button {
+  display: block;
+  border: solid 5px #66118c;
+  text-decoration: none;
+  color: pink;
+  background-color: #4d026f;
+  padding: 1vw;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  border-color: #88208c;
+}
+
+a.download div.bg-img {
+  background-image: url('../media/game_download.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+  aspect-ratio: 1/1;
+}
+
+.actions {
+  display: block ruby;
+  padding: 0 2vw;
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  opacity: 0.8;
+}
+
+.actions img {
+  max-height: 8vh;
+  aspect-ratio: 1/1;
+}
+
+.actions span {
+  position: absolute;
+  bottom: 5px;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  font-size: 0.8em;
+}
+
+.actions .button {
+  margin-left: 1vw;
+  padding-bottom: 10px;
+}
+
 header {
   align-items: center;
   font-size: 3vw;
   padding: 4vh;
   margin: 0 0 2vw 0;
-  color: whitesmoke;
   background-color: #390053;
   font-family: sans;
   border-radius: 30px;
+}
+
+.game footer {
+  padding: 10vh 0 0 0;
+  color: dimgray;
+}
+
+.game header {
+  border-radius: 0;
+  padding: 2vw;
+  padding-bottom: 0;
+  margin: 0;
+  background-color: unset;
+}
+
+.game header h1,
+.game header p {
+  text-align: center;
+  text-transform: none;
+}
+
+.game video {
+  margin: 0;
+}
+
+.game .media {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 0 2vw;
+  background-color: black;
+}
+
+.game img,
+.game video {
+  margin: 0;
+}
+
+.game header img {
+  display: none;
+  object-fit: contain;
+}
+
+.game .media img:hover {
+  box-shadow: 0 0 0 5px pink;
+  z-index: 10;
+}
+
+.game .media img.video {
+  background-color: darkcyan;
+}
+
+.game .media img {
+  width: 20%;
+  cursor: pointer;
+  height: fit-content;
 }
 
 header h1 {
@@ -112,14 +259,64 @@ section {
   flex-wrap: wrap;
 }
 
-img {
+a {
+  position: relative;
+}
+
+img.download {
+  position: absolute;
+  right: 1vw;
+  bottom: 1vw;
+  /*margin: -5vw 0 0 -5vw;*/
+  width: 8vw;
+  /* background-color: grey; */
+  /* border-radius: 50%; */
+}
+
+img,
+video {
   margin: 0 0 2vw 0;
   width: 100%;
 }
 
 footer {
   padding: 0 0 1.5vw 0;
-  font-size: 2.5vw;
+  font-size: 2vw;
+}
+
+.pulse {
+  animation: pulse-heart 25s infinite ease-out;
+}
+
+.select-pulse {
+  animation: pulse-anim 2s infinite;
+}
+
+@keyframes pulse-heart {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-anim {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255, 0, 130, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 15px rgba(255, 0, 130, 0);
+  }
 }
 
 /* Custom for bigger devices (PC, Ipads, etc) */

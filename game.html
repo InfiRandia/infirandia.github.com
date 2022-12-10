@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Infi's - Games</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<script src="js/index.js" defer></script>
+
+<body class="game">
+  <main>
+    <article>
+      <header>
+        <h1 class="game-title">Example Title</h1>
+        <p class="game-desc">This is an example description</p>
+        <div class="media-display">
+          <video autoplay loop muted onclick="trigger_videos_mute()"></video>
+          <img src="">
+          <a class="mute-btn select-pulse" button onclick="trigger_videos_mute(this)">
+            <img src="media/audio_muted.png" />
+          </a>
+        </div>
+      </header>
+      <section class="media">
+        <img class="video" src="media/play_media.gif" alt="" onclick="set_media(this)">
+        <img src="" onclick="set_media(this)">
+      </section>
+      <section class="actions">
+        <a class="button download" href="media/games/SlimePong/windows.zip" download>
+          <img src="media/game_download.gif">
+          <span>Windows</span>
+        </a>
+        <a class="button download" href="media/games/SlimePong/linux.zip" download>
+          <img src="media/game_download.gif">
+          <span>Linux</span>
+        </a>
+      </section>
+    </article>
+  </main>
+  <footer class="center">
+    Copyright InfiRandia 2022<br />
+    All content on this site cannot be published anywhere except by InfiRandia<br />
+    All art, games and articles were created by InfiRandia
+  </footer>
+</body>
+
+</html>
