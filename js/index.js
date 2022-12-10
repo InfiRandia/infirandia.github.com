@@ -1,26 +1,26 @@
 const media = {art: [
-{"url": "media/art/_4.png", "prioritize": 1},
-{"url": "media/art/9.png", "prioritize": 0},
-{"url": "media/art/3.gif", "prioritize": 0},
-{"url": "media/art/13.png", "prioritize": 0},
-{"url": "media/art/11.png", "prioritize": 0},
-{"url": "media/art/6.png", "prioritize": 0},
-{"url": "media/art/15.png", "prioritize": 0},
-{"url": "media/art/_3.png", "prioritize": 1},
-{"url": "media/art/2.gif", "prioritize": 0},
-{"url": "media/art/7.png", "prioritize": 0},
-{"url": "media/art/5.png", "prioritize": 0},
-{"url": "media/art/4.gif", "prioritize": 0},
-{"url": "media/art/_1.png", "prioritize": 1},
-{"url": "media/art/_2.png", "prioritize": 1},
-{"url": "media/art/12.png", "prioritize": 0},
 {"url": "media/art/10.png", "prioritize": 0},
-{"url": "media/art/_6.png", "prioritize": 1},
-{"url": "media/art/_7.png", "prioritize": 1},
-{"url": "media/art/_5.gif", "prioritize": 1},
-{"url": "media/art/14.png", "prioritize": 0},
+{"url": "media/art/6.png", "prioritize": 0},
+{"url": "media/art/9.png", "prioritize": 0},
+{"url": "media/art/p_4.png", "prioritize": 1},
+{"url": "media/art/p_1.png", "prioritize": 1},
+{"url": "media/art/13.png", "prioritize": 0},
+{"url": "media/art/p_6.png", "prioritize": 1},
+{"url": "media/art/15.png", "prioritize": 0},
 {"url": "media/art/1.gif", "prioritize": 0},
+{"url": "media/art/11.png", "prioritize": 0},
+{"url": "media/art/5.png", "prioritize": 0},
+{"url": "media/art/14.png", "prioritize": 0},
+{"url": "media/art/p_5.gif", "prioritize": 1},
+{"url": "media/art/12.png", "prioritize": 0},
 {"url": "media/art/8.png", "prioritize": 0},
+{"url": "media/art/2.gif", "prioritize": 0},
+{"url": "media/art/4.gif", "prioritize": 0},
+{"url": "media/art/7.png", "prioritize": 0},
+{"url": "media/art/p_3.png", "prioritize": 1},
+{"url": "media/art/p_7.png", "prioritize": 1},
+{"url": "media/art/p_2.png", "prioritize": 1},
+{"url": "media/art/3.gif", "prioritize": 0},
 ],games: [
 {"name": "SlimePong", "desc": "A simple ping pong game made with the Godot Engine. The overall theme is a cave with slimes.", "files": [
 {"url": "media/games/SlimePong/windows.zip"},
@@ -241,7 +241,6 @@ if (big_section) {
     var a = document.createElement('a');
 
     a.className = 'button download';
-    a.download = true;
     a.href = c_file.url;
 
     var img = document.createElement('img');
@@ -252,6 +251,8 @@ if (big_section) {
     var substr_start = c_file.url.lastIndexOf('/') + 1;
     label.innerHTML = c_file.url.substring(substr_start, c_file.url.length - 4);
     a.appendChild(label);
+    
+    a.download = c_file.url.substring(substr_start);
 
     actions_section.appendChild(a);
   }
