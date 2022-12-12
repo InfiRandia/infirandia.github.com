@@ -137,17 +137,19 @@ a.download div.bg-img {
 }
 
 .actions {
-  display: block ruby;
+  display: flex;
+  flex-direction: row;
   padding: 0 2vw;
   position: fixed;
   bottom: 20px;
   right: 5px;
   opacity: 0.8;
+  z-index: 30;
 }
 
 .actions img {
   max-height: 8vh;
-  aspect-ratio: 1/1;
+  max-width: 8vh;
 }
 
 .actions span {
@@ -156,7 +158,7 @@ a.download div.bg-img {
   text-align: center;
   width: 100%;
   left: 0;
-  font-size: 0.8em;
+  font-size: 0.68em;
 }
 
 .actions .button {
@@ -197,7 +199,7 @@ header {
 }
 
 .game .media {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   flex-direction: row;
   margin: 0 2vw;
@@ -226,7 +228,6 @@ header {
 .game .media img {
   width: 20%;
   cursor: pointer;
-  height: fit-content;
 }
 
 header h1 {
@@ -332,6 +333,10 @@ footer {
 
   header h1 {
     font-size: 4vw;
+  }
+
+  .actions span {
+    font-size: 0.8em;
   }
 
   header a.social {
