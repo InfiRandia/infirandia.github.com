@@ -1,38 +1,54 @@
-const media = {art: [
-{"url": "media/art/10.png", "prioritize": 0},
-{"url": "media/art/6.png", "prioritize": 0},
-{"url": "media/art/9.png", "prioritize": 0},
-{"url": "media/art/p_4.png", "prioritize": 1},
-{"url": "media/art/p_1.png", "prioritize": 1},
-{"url": "media/art/13.png", "prioritize": 0},
-{"url": "media/art/p_6.png", "prioritize": 1},
-{"url": "media/art/15.png", "prioritize": 0},
-{"url": "media/art/1.gif", "prioritize": 0},
-{"url": "media/art/11.png", "prioritize": 0},
-{"url": "media/art/5.png", "prioritize": 0},
-{"url": "media/art/14.png", "prioritize": 0},
-{"url": "media/art/p_5.gif", "prioritize": 1},
-{"url": "media/art/12.png", "prioritize": 0},
-{"url": "media/art/8.png", "prioritize": 0},
-{"url": "media/art/2.gif", "prioritize": 0},
-{"url": "media/art/4.gif", "prioritize": 0},
-{"url": "media/art/7.png", "prioritize": 0},
-{"url": "media/art/p_3.png", "prioritize": 1},
-{"url": "media/art/p_7.png", "prioritize": 1},
-{"url": "media/art/p_2.png", "prioritize": 1},
-{"url": "media/art/3.gif", "prioritize": 0},
-],games: [
-{"name": "SlimePong", "desc": "A simple ping pong game made with the Godot Engine. The overall theme is a cave with slimes.", "files": [
-{"url": "media/games/SlimePong/windows.zip"},
-{"url": "media/games/SlimePong/linux.zip"},
-], "media": [
-{"url": "media/games/SlimePong/Screenshot_Godot_Engine_20221210202606.png"},
-{"url": "media/games/SlimePong/Screenshot_Godot_Engine_20221210202623.png"},
-{"url": "media/games/SlimePong/Screenshot_Godot_Engine_20221210202712.png"},
-{"url": "media/games/SlimePong/Screenshot_Godot_Engine_20221210202724.png"},
-{"url": "media/games/SlimePong/trailer.mp4"},
-]},
-]};
+const media = {
+  art: [
+    { url: 'media/art/5.png', prioritize: 0 },
+    { url: 'media/art/8.png', prioritize: 0 },
+    { url: 'media/art/p_3.png', prioritize: 1 },
+    { url: 'media/art/10.png', prioritize: 0 },
+    { url: 'media/art/p_4.png', prioritize: 1 },
+    { url: 'media/art/15.png', prioritize: 0 },
+    { url: 'media/art/13.png', prioritize: 0 },
+    { url: 'media/art/p_6.png', prioritize: 1 },
+    { url: 'media/art/2.gif', prioritize: 0 },
+    { url: 'media/art/1.gif', prioritize: 0 },
+    { url: 'media/art/9.png', prioritize: 0 },
+    { url: 'media/art/p_2.png', prioritize: 1 },
+    { url: 'media/art/12.png', prioritize: 0 },
+    { url: 'media/art/3.gif', prioritize: 0 },
+    { url: 'media/art/p_1.png', prioritize: 1 },
+    { url: 'media/art/7.png', prioritize: 0 },
+    { url: 'media/art/14.png', prioritize: 0 },
+    { url: 'media/art/p_5.gif', prioritize: 1 },
+    { url: 'media/art/p_7.png', prioritize: 1 },
+    { url: 'media/art/11.png', prioritize: 0 },
+    { url: 'media/art/4.gif', prioritize: 0 },
+    { url: 'media/art/6.png', prioritize: 0 },
+  ],
+  games: [
+    {
+      name: 'SlimePong',
+      desc: 'A simple ping pong game made with the Godot Engine. The overall theme is a cave with slimes.',
+      files: [
+        { url: 'media/games/SlimePong/windows.zip' },
+        { url: 'media/games/SlimePong/linux.zip' },
+      ],
+      media: [
+        {
+          url: 'media/games/SlimePong/Screenshot_Godot_Engine_20221210202606.png',
+        },
+        {
+          url: 'media/games/SlimePong/Screenshot_Godot_Engine_20221210202623.png',
+        },
+        {
+          url: 'media/games/SlimePong/Screenshot_Godot_Engine_20221210202712.png',
+        },
+        {
+          url: 'media/games/SlimePong/Screenshot_Godot_Engine_20221210202724.png',
+        },
+        { url: 'media/games/SlimePong/trailer.mp4' },
+      ],
+    },
+  ],
+};
 // Generated Media Entries ^
 
 class Entry {
@@ -59,7 +75,7 @@ class Entry {
   get_element() {
     if (this.media.length > 0) {
       var a = document.createElement('a');
-      a.href = './game?id=' + this.id;
+      a.href = '/game?id=' + this.id;
 
       var download_gif = document.createElement('img');
       download_gif.className = 'download pulse';
@@ -74,22 +90,32 @@ class Entry {
 
       for (var s in this.media) {
         var source_data = this.media[s];
-        var n_source = document.createElement('source');
-        n_source.src = source_data.url;
-        n_source.type =
-          'video/' + source_data.url.substring(source_data.url.length - 3);
-        video.appendChild(n_source);
+
+        if (source_data.url.indexOf('.mp4') >= 0) {
+          var n_source = document.createElement('source');
+          n_source.src = source_data.url;
+          n_source.type =
+            'video/' + source_data.url.substring(source_data.url.length - 3);
+          video.appendChild(n_source);
+        }
       }
 
       a.appendChild(video);
 
       return a;
     } else if (this.text.length == 0 && this.img.length != 0) {
+      var loading_wrapper = document.createElement('a');
       var img = document.createElement('img');
+      loading_wrapper.appendChild(img);
 
-      img.src = this.img;
+      var last_divider = this.img.lastIndexOf('/') + 1;
+      //img.addEventListener('load', load_image);
+      img.src =
+        this.img.substring(0, last_divider) +
+        'thumb_' +
+        this.img.substring(last_divider);
 
-      return img;
+      return loading_wrapper;
     } else {
       var text_entry = document.createElement('article');
 
@@ -98,6 +124,23 @@ class Entry {
       return text_entry;
     }
   }
+}
+
+function load_image(target) {
+  var placeholder = new Image();
+  var full_url = target.src.replace('thumb_', '');
+
+  target.parentNode.classList.toggle('loading');
+  target.parentNode.style.minHeight = target.height + 'px';
+
+  placeholder.addEventListener('load', function () {
+    target.removeEventListener('load', load_image);
+    target.src = full_url;
+    target.parentNode.classList.toggle('loading');
+    target.parentNode.style = "";
+  });
+
+  placeholder.src = full_url;
 }
 
 function set_media(element) {
@@ -251,9 +294,24 @@ if (big_section) {
     var substr_start = c_file.url.lastIndexOf('/') + 1;
     label.innerHTML = c_file.url.substring(substr_start, c_file.url.length - 4);
     a.appendChild(label);
-    
+
     a.download = c_file.url.substring(substr_start);
 
     actions_section.appendChild(a);
   }
 }
+
+function find_and_load_all_images() {
+  var img_elements = document.getElementsByTagName('img');
+
+  for (var x in img_elements) {
+    var img = img_elements[x];
+    if (img.src !== undefined && img.src.indexOf('thumb_') >= 0) {
+      load_image(img);
+    }
+  }
+}
+
+window.onload = function () {
+  find_and_load_all_images();
+};

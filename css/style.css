@@ -36,6 +36,21 @@
   width: 100%;
 }
 
+.loading {
+  position: relative;
+}
+
+.loading:after {
+  background: url(../media/image_download.gif) center center #0009 no-repeat;
+  background-size: 7vw;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .center {
   text-align: center;
   justify-content: center;
@@ -264,8 +279,11 @@ section {
   flex-wrap: wrap;
 }
 
-a {
+section > a {
+  display: block;
   position: relative;
+  min-height: 100px;
+  min-width: 100%;
 }
 
 img.download {
@@ -277,10 +295,13 @@ img.download {
   /* background-color: grey; */
   /* border-radius: 50%; */
 }
+  
+section a {
+  margin: 0 0 2vw 0;
+}
 
 img,
 video {
-  margin: 0 0 2vw 0;
   width: 100%;
 }
 
