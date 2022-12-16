@@ -59,7 +59,7 @@ class Entry {
   get_element() {
     if (this.media.length > 0) {
       var a = document.createElement('a');
-      a.href = './game.html?id=' + this.id;
+      a.href = './game?id=' + this.id;
 
       var download_gif = document.createElement('img');
       download_gif.className = 'download pulse';
