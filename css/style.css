@@ -36,6 +36,24 @@
   width: 100%;
 }
 
+.listeningto {
+  display: flex;
+  align-items: center;
+  margin: 0 0 1vw 0;
+  max-height: 200px;
+  background-color: burlywood;
+}
+
+.listeningto img {
+  width: 20vw;
+  height: 20vw;
+}
+
+.listeningto iframe {
+  width: 100%;
+  height: 100%;
+}
+
 .loading {
   position: relative;
 }
@@ -295,7 +313,7 @@ img.download {
   /* background-color: grey; */
   /* border-radius: 50%; */
 }
-  
+
 section a {
   margin: 0 0 2vw 0;
 }
@@ -348,6 +366,11 @@ footer {
 
 /* Custom for bigger devices (PC, Ipads, etc) */
 @media screen and (min-width: 480px) {
+  .listeningto img {
+    width: 200px;
+    height: 200px;
+  }
+
   main {
     display: flex;
     justify-content: center;
