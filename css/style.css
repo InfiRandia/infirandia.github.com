@@ -36,6 +36,77 @@
   width: 100%;
 }
 
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 1vw 0;
+}
+
+button.selected {
+  color: darkorchid;
+  background-color: orange;
+}
+
+button.disabled {
+  color: whitesmoke;
+  background-color: #bbb;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 2px;
+}
+
+button {
+  flex: auto;
+  background-color: purple;
+  border: solid 4px #000;
+  color: orange;
+  text-align: center;
+  font-size: 1.15em;
+  padding: 10px 0;
+  transition: all 0.5s;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 0 5px;
+  font-weight: 800;
+}
+
+/* button:hover { */
+/*   background-color: orange; */
+/*   color: darkorchid; */
+/* } */
+
+.category_animation {
+  transition: all 0.75s ease-out;
+}
+
+.hide_animations > .category_animation {
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  min-height: 0 !important;
+}
+
+.category_game {
+  transition: all 0.75s ease-out;
+}
+
+.hide_games > .category_game {
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  min-height: 0 !important;
+}
+
+.category_art {
+  transition: all 0.75s ease-out;
+}
+
+.hide_art > .category_art {
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  min-height: 0 !important;
+}
+
 .listeningto {
   display: flex;
   align-items: center;
@@ -142,6 +213,13 @@ article {
   background-size: contain;
 }
 
+.back {
+  position: fixed;
+  top: 20px;
+  left: 35px;
+  max-width: 60px;
+}
+
 a.muted {
   background-image: url('../media/audio_on.png');
 }
@@ -159,6 +237,10 @@ a.muted {
 
 .button:hover {
   border-color: #88208c;
+}
+
+a.download {
+  min-width: unset;
 }
 
 a.download div.bg-img {
@@ -311,7 +393,8 @@ img.download {
   /*margin: -5vw 0 0 -5vw;*/
   width: 8vw;
   /* background-color: grey; */
-  /* border-radius: 50%; */
+  border-radius: 50%;
+  overflow: visible;
 }
 
 section a {

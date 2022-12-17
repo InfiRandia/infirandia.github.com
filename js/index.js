@@ -75,15 +75,15 @@ class Entry {
   get_element() {
     if (this.media.length > 0) {
       var a = document.createElement('a');
+      a.classList.add('category_game');
       a.href = '/game?id=' + this.id;
 
       var download_gif = document.createElement('img');
-      download_gif.className = 'download pulse';
+      download_gif.className = 'download select-pulse';
       download_gif.src = 'media/game_download.gif';
       a.appendChild(download_gif);
 
       var video = document.createElement('video');
-      video.className = 'select-pulse';
       video.autoplay = true;
       video.loop = true;
       video.muted = true;
@@ -105,6 +105,13 @@ class Entry {
       return a;
     } else if (this.text.length == 0 && this.img.length != 0) {
       var loading_wrapper = document.createElement('a');
+
+      if (this.img.indexOf('.gif') >= 0) {
+        loading_wrapper.classList.add('category_animation');
+      } else {
+        loading_wrapper.classList.add('category_art');
+      }
+
       var img = document.createElement('img');
       loading_wrapper.appendChild(img);
 
@@ -137,7 +144,7 @@ function load_image(target) {
     target.removeEventListener('load', load_image);
     target.src = full_url;
     target.parentNode.classList.toggle('loading');
-    target.parentNode.style = "";
+    target.parentNode.style = '';
   });
 
   placeholder.src = full_url;
@@ -312,6 +319,41 @@ function find_and_load_all_images() {
   }
 }
 
+var categories = ['art', 'animations', 'games'];
+
+function toggle_category(evt) {
+  var sections = document.getElementsByTagName('section');
+  var target = evt.target;
+
+  target.classList.toggle('disabled');
+
+  for (var x in sections) {
+    var section = sections[x];
+
+    if (section.classList !== undefined) {
+      section.classList.toggle('hide_' + target.getAttribute('name'));
+    }
+  }
+}
+
+function load_categories() {
+  var categories_div = document.getElementsByClassName('categories')[0];
+
+  for (var x in categories) {
+    var category = categories[x];
+    var n_btn = document.createElement('button');
+
+    n_btn.setAttribute('name', category);
+    n_btn.innerHTML = category;
+
+    n_btn.addEventListener('click', toggle_category);
+
+    categories_div.appendChild(n_btn);
+  }
+}
+
 window.onload = function () {
   find_and_load_all_images();
+
+  load_categories();
 };
