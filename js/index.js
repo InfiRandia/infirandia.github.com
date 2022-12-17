@@ -1,54 +1,38 @@
-const media = {
-  art: [
-    { url: 'media/art/5.png', prioritize: 0 },
-    { url: 'media/art/8.png', prioritize: 0 },
-    { url: 'media/art/p_3.png', prioritize: 1 },
-    { url: 'media/art/10.png', prioritize: 0 },
-    { url: 'media/art/p_4.png', prioritize: 1 },
-    { url: 'media/art/15.png', prioritize: 0 },
-    { url: 'media/art/13.png', prioritize: 0 },
-    { url: 'media/art/p_6.png', prioritize: 1 },
-    { url: 'media/art/2.gif', prioritize: 0 },
-    { url: 'media/art/1.gif', prioritize: 0 },
-    { url: 'media/art/9.png', prioritize: 0 },
-    { url: 'media/art/p_2.png', prioritize: 1 },
-    { url: 'media/art/12.png', prioritize: 0 },
-    { url: 'media/art/3.gif', prioritize: 0 },
-    { url: 'media/art/p_1.png', prioritize: 1 },
-    { url: 'media/art/7.png', prioritize: 0 },
-    { url: 'media/art/14.png', prioritize: 0 },
-    { url: 'media/art/p_5.gif', prioritize: 1 },
-    { url: 'media/art/p_7.png', prioritize: 1 },
-    { url: 'media/art/11.png', prioritize: 0 },
-    { url: 'media/art/4.gif', prioritize: 0 },
-    { url: 'media/art/6.png', prioritize: 0 },
-  ],
-  games: [
-    {
-      name: 'SlimePong',
-      desc: 'A simple ping pong game made with the Godot Engine. The overall theme is a cave with slimes.',
-      files: [
-        { url: 'media/games/SlimePong/windows.zip' },
-        { url: 'media/games/SlimePong/linux.zip' },
-      ],
-      media: [
-        {
-          url: 'media/games/SlimePong/Screenshot_Godot_Engine_20221210202606.png',
-        },
-        {
-          url: 'media/games/SlimePong/Screenshot_Godot_Engine_20221210202623.png',
-        },
-        {
-          url: 'media/games/SlimePong/Screenshot_Godot_Engine_20221210202712.png',
-        },
-        {
-          url: 'media/games/SlimePong/Screenshot_Godot_Engine_20221210202724.png',
-        },
-        { url: 'media/games/SlimePong/trailer.mp4' },
-      ],
-    },
-  ],
-};
+const media = {art: [
+{"url": "media/art/2.gif", "prioritize": 0},
+{"url": "media/art/9.png", "prioritize": 0},
+{"url": "media/art/6.png", "prioritize": 0},
+{"url": "media/art/8.png", "prioritize": 0},
+{"url": "media/art/1.gif", "prioritize": 0},
+{"url": "media/art/p_1.png", "prioritize": 1},
+{"url": "media/art/12.png", "prioritize": 0},
+{"url": "media/art/p_2.png", "prioritize": 1},
+{"url": "media/art/13.png", "prioritize": 0},
+{"url": "media/art/p_4.png", "prioritize": 1},
+{"url": "media/art/15.png", "prioritize": 0},
+{"url": "media/art/7.png", "prioritize": 0},
+{"url": "media/art/p_7.png", "prioritize": 1},
+{"url": "media/art/11.png", "prioritize": 0},
+{"url": "media/art/p_6.png", "prioritize": 1},
+{"url": "media/art/p_3.png", "prioritize": 1},
+{"url": "media/art/4.gif", "prioritize": 0},
+{"url": "media/art/3.gif", "prioritize": 0},
+{"url": "media/art/10.png", "prioritize": 0},
+{"url": "media/art/14.png", "prioritize": 0},
+{"url": "media/art/p_5.gif", "prioritize": 1},
+{"url": "media/art/5.png", "prioritize": 0},
+],games: [
+{"name": "SlimePong", "desc": "A simple ping pong game made with the Godot Engine. The overall theme is a cave with slimes.", "files": [
+{"url": "media/games/SlimePong/windows.zip"},
+{"url": "media/games/SlimePong/linux.zip"},
+], "media": [
+{"url": "media/games/SlimePong/Screenshot_Godot_Engine_20221210202606.png"},
+{"url": "media/games/SlimePong/Screenshot_Godot_Engine_20221210202623.png"},
+{"url": "media/games/SlimePong/Screenshot_Godot_Engine_20221210202712.png"},
+{"url": "media/games/SlimePong/Screenshot_Godot_Engine_20221210202724.png"},
+{"url": "media/games/SlimePong/trailer.mp4"},
+]},
+]};
 // Generated Media Entries ^
 
 class Entry {

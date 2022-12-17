@@ -475,6 +475,10 @@ footer {
     max-width: 3.5vw;
   }
 
+  footer {
+    font-size: 1.2em;
+  }
+
   section.small {
     max-width: 420px;
     width: 35vw;
