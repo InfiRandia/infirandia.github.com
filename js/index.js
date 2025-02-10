@@ -1,30 +1,55 @@
 const media = {
   art: [
-    { url: "media/art/6.webp", prioritize: 0 },
-    { url: "media/art/4.webp", prioritize: 0 },
-    { url: "media/art/8.webp", prioritize: 0 },
-    { url: "media/art/5.webp", prioritize: 0 },
-    { url: "media/art/p_5.webp", prioritize: 1 },
-    { url: "media/art/10.webp", prioritize: 0 },
-    { url: "media/art/1.webp", prioritize: 0 },
-    { url: "media/art/3.webp", prioritize: 0 },
     { url: "media/art/p_2.webp", prioritize: 1 },
     { url: "media/art/p_4.webp", prioritize: 1 },
+    { url: "media/art/5.webp", prioritize: 0 },
     { url: "media/art/p_1.webp", prioritize: 1 },
-    { url: "media/art/9.webp", prioritize: 0 },
-    { url: "media/art/11.webp", prioritize: 0 },
-    { url: "media/art/p_6.webp", prioritize: 1 },
-    { url: "media/art/7.webp", prioritize: 0 },
-    { url: "media/art/2.webp", prioritize: 0 },
     { url: "media/art/p_3.webp", prioritize: 1 },
+    { url: "media/art/1.webp", prioritize: 0 },
+    { url: "media/art/4.webp", prioritize: 0 },
+    { url: "media/art/3.webp", prioritize: 0 },
+    { url: "media/art/6.webp", prioritize: 0 },
+    { url: "media/art/2.webp", prioritize: 0 },
+  ],
+  animations: [
+    { url: "media/animation/20241228_stopmotion.mp4", prioritize: 0 },
+    { url: "media/animation/slime_activation.gif", prioritize: 0 },
+    { url: "media/animation/.nfs0811000010f1f30c00000024", prioritize: 0 },
+  ],
+  diy: [
+    { url: "media/diy/1.webp", prioritize: 0 },
+    { url: "media/diy/2.webp", prioritize: 0 },
   ],
   games: [
+    {
+      name: "CryptCrusherPrototype",
+      desc: "A prototype of a dungeon adventure game where you solve puzzles, defeat monsters and bosses. Your goal is to defeat the a boss. Controller required.",
+      files: [
+        { url: "media/games/CryptCrusherPrototype/linux.zip" },
+        { url: "media/games/CryptCrusherPrototype/windows.zip" },
+      ],
+      media: [
+        { url: "media/games/CryptCrusherPrototype/trailer.mp4" },
+        {
+          url: "media/games/CryptCrusherPrototype/Screenshot_Godot_Engine_202502101100.png",
+        },
+        {
+          url: "media/games/CryptCrusherPrototype/Screenshot_Godot_Engine_202502101102.png",
+        },
+        {
+          url: "media/games/CryptCrusherPrototype/Screenshot_Godot_Engine_202502101104.png",
+        },
+        {
+          url: "media/games/CryptCrusherPrototype/Screenshot_Godot_Engine_202502101107.png",
+        },
+      ],
+    },
     {
       name: "SlimePong",
       desc: "A simple ping pong game made with the Godot Engine. The overall theme is a cave with slimes.",
       files: [
-        { url: "media/games/SlimePong/windows.zip" },
         { url: "media/games/SlimePong/linux.zip" },
+        { url: "media/games/SlimePong/windows.zip" },
       ],
       media: [
         {
@@ -50,6 +75,7 @@ class Entry {
   constructor(
     id,
     is_big = true,
+    category = "",
     href = "",
     img = "",
     text = "",
@@ -59,6 +85,7 @@ class Entry {
   ) {
     this.id = id;
     this.is_big = is_big;
+    this.category = category;
     this.name = name;
     this.href = href;
     this.img = img;
@@ -70,7 +97,7 @@ class Entry {
   get_element() {
     if (this.media.length > 0) {
       var a = document.createElement("a");
-      a.classList.add("category_game");
+      a.classList.add("category_" + this.category);
       a.href = "/game?id=" + this.id;
 
       var download_gif = document.createElement("img");
@@ -101,21 +128,31 @@ class Entry {
     } else if (this.text.length == 0 && this.img.length != 0) {
       var loading_wrapper = document.createElement("a");
 
-      if (this.img.indexOf(".gif") >= 0) {
-        loading_wrapper.classList.add("category_animation");
+      loading_wrapper.classList.add("category_" + this.category);
+
+      if (this.img.indexOf(".mp4") >= 0) {
+        var video = document.createElement("video");
+        loading_wrapper.appendChild(video);
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+
+        var n_source = document.createElement("source");
+        n_source.src = this.img;
+        n_source.type = "video/" + this.img.substring(this.img.length - 3);
+        video.appendChild(n_source);
+        console.log(this.img);
       } else {
-        loading_wrapper.classList.add("category_art");
+        var img = document.createElement("img");
+        loading_wrapper.appendChild(img);
+
+        var last_divider = this.img.lastIndexOf("/") + 1;
+        //img.addEventListener('load', load_image);
+        img.src =
+          this.img.substring(0, last_divider) +
+          "thumb_" +
+          this.img.substring(last_divider);
       }
-
-      var img = document.createElement("img");
-      loading_wrapper.appendChild(img);
-
-      var last_divider = this.img.lastIndexOf("/") + 1;
-      //img.addEventListener('load', load_image);
-      img.src =
-        this.img.substring(0, last_divider) +
-        "thumb_" +
-        this.img.substring(last_divider);
 
       return loading_wrapper;
     } else {
@@ -198,17 +235,17 @@ function trigger_videos_mute(btn) {
   }
 }
 
+function get_random_int(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+}
+
 var entries = [];
 var big_section = document.getElementsByClassName("big")[0];
 var small_section = document.getElementsByClassName("small")[0];
 
 if (big_section) {
-  for (var x in media.art) {
-    var art = media.art[x];
-
-    entries.push(new Entry(x, art.prioritize != 0, "", art.url));
-  }
-
   for (var x in media.games) {
     var game = media.games[x];
 
@@ -216,6 +253,7 @@ if (big_section) {
       new Entry(
         x,
         true,
+        "game",
         "",
         game.media[0].url,
         game.desc,
@@ -224,6 +262,29 @@ if (big_section) {
         game.files,
       ),
     );
+  }
+
+  while (media.art.length > 0) {
+    var entry = media.art.splice(get_random_int(0, media.art.length - 1), 1)[0];
+
+    entries.push(new Entry(x, entry.prioritize != 0, "art", "", entry.url));
+  }
+
+  while (media.animations.length > 0) {
+    var entry = media.animations.splice(
+      get_random_int(0, media.animations.length - 1),
+      1,
+    )[0];
+
+    entries.push(
+      new Entry(x, entry.prioritize != 0, "animation", "", entry.url),
+    );
+  }
+
+  while (media.diy.length > 0) {
+    var entry = media.diy.splice(get_random_int(0, media.diy.length - 1), 1)[0];
+
+    entries.push(new Entry(x, entry.prioritize != 0, "diy", "", entry.url));
   }
 
   for (var x in entries) {
@@ -314,11 +375,35 @@ function find_and_load_all_images() {
   }
 }
 
-var categories = ["art", "animations", "games"];
+function load_search_params() {}
+
+function update_search_params() {
+  var c_url = new URL(window.location.href);
+  var section = document.getElementsByTagName("section")[0];
+
+  if (section.classList !== undefined) {
+    var hidden_categories = [];
+    for (const value of section.classList.values()) {
+      if (
+        (typeof value === "string" || value instanceof String) &&
+        value.startsWith("hide_")
+      ) {
+        hidden_categories.push(value.substring(5));
+      }
+    }
+
+    var url_params = c_url.searchParams;
+    url_params.set("hide", hidden_categories.join("|"));
+    history.pushState({}, "", c_url.href);
+  }
+}
+
+var categories = ["art", "animations", "games", "diy"];
 
 function toggle_category(evt) {
   var sections = document.getElementsByTagName("section");
   var target = evt.target;
+  const c_category = target.getAttribute("name");
 
   target.classList.toggle("disabled");
 
@@ -326,13 +411,22 @@ function toggle_category(evt) {
     var section = sections[x];
 
     if (section.classList !== undefined) {
-      section.classList.toggle("hide_" + target.getAttribute("name"));
+      section.classList.toggle("hide_" + c_category);
     }
   }
+
+  update_search_params();
 }
 
 function load_categories() {
   var categories_div = document.getElementsByClassName("categories")[0];
+
+  if (categories_div === null || categories_div === undefined) {
+    return;
+  }
+
+  var c_url = new URL(window.location.href);
+  var url_params = c_url.searchParams;
 
   for (var x in categories) {
     var category = categories[x];
@@ -344,11 +438,27 @@ function load_categories() {
     n_btn.addEventListener("click", toggle_category);
 
     categories_div.appendChild(n_btn);
+
+    if (url_params.get("hide") !== null) {
+      var hidden_categories = url_params.get("hide").split("|");
+      if (hidden_categories.includes(category)) {
+        n_btn.click();
+      }
+    }
   }
+}
+
+function footer() {
+  var element = document.getElementsByTagName("footer")[0];
+  let c_year = new Date().getFullYear();
+  element.innerHTML = `Copyright InfiRandia 2022-${c_year}<br />
+    All content on this site cannot be published anywhere except by InfiRandia<br />
+    All art, games and articles were created by InfiRandia`;
 }
 
 window.onload = function () {
   find_and_load_all_images();
 
   load_categories();
+  footer();
 };
