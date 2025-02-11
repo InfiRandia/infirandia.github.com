@@ -1,20 +1,19 @@
 const media = {
   art: [
-    { url: "media/art/p_2.webp", prioritize: 1 },
+    { url: "media/art/2.webp", prioritize: 0 },
+    { url: "media/art/4.webp", prioritize: 0 },
+    { url: "media/art/p_3.webp", prioritize: 1 },
     { url: "media/art/p_4.webp", prioritize: 1 },
+    { url: "media/art/p_2.webp", prioritize: 1 },
     { url: "media/art/5.webp", prioritize: 0 },
     { url: "media/art/p_1.webp", prioritize: 1 },
-    { url: "media/art/p_3.webp", prioritize: 1 },
-    { url: "media/art/1.webp", prioritize: 0 },
-    { url: "media/art/4.webp", prioritize: 0 },
     { url: "media/art/3.webp", prioritize: 0 },
     { url: "media/art/6.webp", prioritize: 0 },
-    { url: "media/art/2.webp", prioritize: 0 },
+    { url: "media/art/1.webp", prioritize: 0 },
   ],
   animations: [
     { url: "media/animation/20241228_stopmotion.mp4", prioritize: 0 },
     { url: "media/animation/slime_activation.gif", prioritize: 0 },
-    { url: "media/animation/.nfs0811000010f1f30c00000024", prioritize: 0 },
   ],
   diy: [
     { url: "media/diy/1.webp", prioritize: 0 },
@@ -29,7 +28,6 @@ const media = {
         { url: "media/games/CryptCrusherPrototype/windows.zip" },
       ],
       media: [
-        { url: "media/games/CryptCrusherPrototype/trailer.mp4" },
         {
           url: "media/games/CryptCrusherPrototype/Screenshot_Godot_Engine_202502101100.png",
         },
@@ -42,6 +40,7 @@ const media = {
         {
           url: "media/games/CryptCrusherPrototype/Screenshot_Godot_Engine_202502101107.png",
         },
+        { url: "media/games/CryptCrusherPrototype/trailer.mp4" },
       ],
     },
     {
